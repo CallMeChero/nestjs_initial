@@ -1,9 +1,11 @@
+import { Injectable } from "@nestjs/common";
 import { MessagesRepository } from "./messages.respository";
 
+@Injectable()  // AKO OVO NE STAVIMO NECE IC U DI - drugim rijecima nece se re-use ako ima vise instanci
 export class MessagesService {
 
     constructor(
-        private readonly _messagesRepo: MessagesRepository
+        public readonly _messagesRepo: MessagesRepository
     ) { }
 
     async findOne(id: string) {

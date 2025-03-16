@@ -1,5 +1,7 @@
+import { Injectable } from '@nestjs/common';
 import { readFile, writeFile } from 'fs/promises';
 
+@Injectable() // AKO OVO NE STAVIMO NECE IC U DI - drugim rijecima nece se re-use ako ima vise instanci
 export class MessagesRepository {
     async findOne(id: string) {
         const contents = await readFile('messages.json', 'utf8')
